@@ -416,40 +416,32 @@
             </div>
 
             <div class="col-md-6 ">
-                <h2>
-                    Связь с нами
-                </h2>
-                <form action="mail.php" method="post">
+                <h2>Связь с нами</h2>
+                <form action="consult-request" method="post">
                     <div class="form-group">
                         <input type="text" name="name" class="form-control" placeholder="Имя">
-                        <input type="hidden" name="from" value="Остались вопросы?" class="form-control"
-                            placeholder="Имя">
+                        <input type="hidden" name="from" value="Остались вопросы?" class="form-control" placeholder="Имя">
                     </div>
-
                     <div class="form-group">
                         <input type="text" class="form-control" name="phone" placeholder="Телефон">
                     </div>
-
                     <div class="form-group">
-                        <select name="where">
+                        <select name="role">
                             <option value="" selected disabled>Кто вы?</option>
-                            <option value="Учащийся">Учащийся</option>
-                            <option value="Родитель">Родитель</option>
-
+                            <option value="student">Учащийся</option>
+                            <option value="parent">Родитель</option>
                         </select>
-                        <input type="text" name='time' class="form-control" placeholder="Удобное время для связи">
-                        <select name="consult" style="margin-top:20px;">
-                            <option value="" selected disabled>Когда нужна консультация	</option>
-                            <option value="Сейчас срочно">Сейчас срочно</option>
-                            <option value="Сегодня в любое время">Сегодня в любое время</option>
-                            <option value="Завтра">Завтра</option>
-                            <option value="В другой день">В другой день</option>
+                        <input type="text" name="available-time" class="form-control" placeholder="Удобное время для связи">
+                        <select name="consult-date" style="margin-top:20px;">
+                            <option value="" selected disabled>Когда нужна консультация</option>
+                            <option value="now">Сейчас срочно</option>
+                            <option value="today">Сегодня в любое время</option>
+                            <option value="tomorrow">Завтра</option>
+                            <option value="other-day">В другой день</option>
                         </select>
                     </div>
-
                     <div class="form-group">
-                        <textarea placeholder="Опишите вашу проблему" name="more" class="form-control"
-                            id="exampleFormControlTextarea1" rows="5"></textarea>
+                        <textarea placeholder="Опишите вашу проблему" name="description" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
                     </div>
                     <button type="submit" class="btn2">Отправить заявку</button>
                 </form>

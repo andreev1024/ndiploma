@@ -57,10 +57,8 @@ func (s *APIServer) router() http.Handler {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/", s.defaultRoute)
-	router.Methods("POST").Path("/items").Handler(Endpoint{s.createItem})
-	router.Methods("GET").Path("/items").Handler(Endpoint{s.listItems})
-
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
+	router.Methods("POST").Path("/consult-requests").Handler(Endpoint{s.createConsultRequest})
 
 	return router
 }
