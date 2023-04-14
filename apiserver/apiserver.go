@@ -60,12 +60,14 @@ func (s *APIServer) router() http.Handler {
 	router.Methods("POST").Path("/items").Handler(Endpoint{s.createItem})
 	router.Methods("GET").Path("/items").Handler(Endpoint{s.listItems})
 
+	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
+
 	return router
 }
 
 func (s *APIServer) defaultRoute(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
-	tmpl, _ := template.ParseFiles("templates/index.tmpl")
+	tmpl, _ := template.ParseFiles("templates/index.go.tmpl")
 	tmpl.Execute(w, nil)
 }
 
