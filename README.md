@@ -2,7 +2,13 @@ My [niece](https://github.com/Troublemaker06) diploma. My part is the backend (G
 
 # How to run locally
 
--   run `docker compose up` in the project dir;
+-   run in the project directory
+
+```sh
+docker compose up # the web server will start (shell #1)
+docker compose --profile tools run migrate up # migration will execute (shell #2)
+```
+
 -   open `localhost:8081` in the browser.
 
 # API
