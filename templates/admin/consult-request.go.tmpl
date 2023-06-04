@@ -1,0 +1,9 @@
+{{define "body"}}
+        <div class='consult-request-list-item'>
+            <ul>
+                <li>{{ .ConsultRequest.Name }} ({{ .ConsultRequest.Role }})</li>
+                <li>{{ .ConsultRequest.Phone }}</li>
+                <li>Consult at {{ .ConsultRequest.AvailableTime }} {{ .ConsultRequest.ConsultDate }}</li>
+            </ul>
+        </div>
+{{end}}

@@ -1,9 +1,11 @@
 {{define "body"}}
     {{range .ConsultRequests}}
-        <a href="/admin/item/{{ .Id }}">
-            <div class='item'>
-                <p>{{ .Name }}</p>
-                <p>Consult at {{ .AvailableTime }}, {{ .ConsultDate }}</p>
+        <a href="/admin/consult-request/{{ .Id }}">
+            <div class='consult-request-list-item'>
+                <ul>
+                    <li>{{ .Name }}</li>
+                    <li>Consult at {{ .AvailableTime }}, {{ .ConsultDate }}</li>
+                </ul>
             </div>
         </a>
     {{else}}
