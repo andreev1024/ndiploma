@@ -1,0 +1,12 @@
+{{define "body"}}
+    {{range .ConsultRequests}}
+        <a href="/admin/item/{{ .Id }}">
+            <div class='item'>
+                <p>{{ .Name }}</p>
+                <p>Consult at {{ .AvailableTime }}, {{ .ConsultDate }}</p>
+            </div>
+        </a>
+    {{else}}
+        <div><strong>no rows</strong></div>
+    {{end}}
+{{end}}
