@@ -60,7 +60,7 @@ func (s *APIServer) router() http.Handler {
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 	router.Methods("POST").Path("/consult-requests").Handler(Endpoint{s.createConsultRequest})
 	router.Methods("GET").Path("/admin").Handler(Endpoint{s.adminMainPage})
-	router.Methods("GET").Path("/admin/{id:[0-9]+}").Handler(Endpoint{s.adminItemPage})
+	router.Methods("GET").Path("/admin/consult-request/{id:[0-9]+}").Handler(Endpoint{s.adminItemPage})
 
 	return router
 }

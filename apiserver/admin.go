@@ -27,7 +27,7 @@ func (s *APIServer) adminMainPage(w http.ResponseWriter, req *http.Request) erro
 		Title           string
 		ConsultRequests []storage.ConsultRequest
 	}{
-		Title:           "My page",
+		Title:           "Admin Main Page",
 		ConsultRequests: consultRequests,
 	}
 
@@ -37,7 +37,7 @@ func (s *APIServer) adminMainPage(w http.ResponseWriter, req *http.Request) erro
 func (s *APIServer) adminItemPage(w http.ResponseWriter, req *http.Request) error {
 	id, _ := strconv.Atoi(mux.Vars(req)["id"])
 
-	t, err := template.ParseFiles("templates/admin/item.go.tmpl", "templates/admin/layout.go.tmpl")
+	t, err := template.ParseFiles("templates/admin/consult-request.go.tmpl", "templates/admin/layout.go.tmpl")
 	if err != nil {
 		return err
 	}
@@ -56,7 +56,7 @@ func (s *APIServer) adminItemPage(w http.ResponseWriter, req *http.Request) erro
 		Title          string
 		ConsultRequest storage.ConsultRequest
 	}{
-		Title:          "My page",
+		Title:          consultRequest.Name,
 		ConsultRequest: consultRequest,
 	}
 
