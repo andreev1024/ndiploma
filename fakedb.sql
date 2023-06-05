@@ -10,7 +10,7 @@ create table Application{
     id_application SERIAL PRIMARY KEY
     id_client int not null
     id_teacher int not null
-    application_date date
+    application_date date not null
     application_time time
     FOREIGN KEY (id_client) REFERENCES Application (id_client)
     FOREIGN KEY (id_teacher) REFERENCES Teacher (id_teacher)
