@@ -3,16 +3,17 @@
 
 <head>
 
-
+   
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <!-- Required meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="favicon.ico?ver=3" type="image/x-icon">
-    <link rel="stylesheet" href="/static/css/owl.carousel.css">
-    <link rel="stylesheet" href="/static/css/style.css?ver=5">
+
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/owl.carousel.css">
+    <link rel="stylesheet" href="static/css/style.css">
+
     <title>Психологическая помощь</title>
     <meta name="description"
           content="Психологическая помощь родителям и учащимся 'Средней школы №126 г. Минска'"/>
@@ -77,7 +78,7 @@
             text-align: center !important;
         }
     </style>
-
+      
 
 
 
@@ -96,15 +97,16 @@
                     <div class="logo" >
                         <a href ="http://sch126.minsk.edu.by/"><img src="/static/img/sch126.png" alt="логотип СШ №126"
                             title="Изображение логотипа СШ №126" ></a>
-                        <p>Психологическая  <br> помощь</p>
+                        <p>Психологическая  <br> помощь</p> 
                     </div>
                 </div>
 
                 <div class="col-lg-5	 col-md-1" >
                     <ul id="menu" class="menu" >
                         <li><a href="#problem"> Проблемы </a></li>
-                        <li><a href="#video"> Видео </a></li>
+                        <li><a href="#video"> Видео </a></li>  
                         <li><a href="#contact"> Контакты </a></li>
+                        <li><a data-fancybox href="#call1"> Вход</a></li>
                         <button id="menu-toggle2"><i class="fas fa-times "></i></button>
                     </ul>
                 </div>
@@ -246,7 +248,7 @@
             <h4>Поддержка беременных</h4>
             <p>Страхи перед родами, сложности с беременностью и вынашиванием, подготовка к материнству.</p>
         </div>
-
+        
         <div style="text-align:center" class="col-md-12 col-12"><b><a  href="#cal2w">Другие
             проблемы</a></b><br><br><br><br><br>
         </div>
@@ -363,10 +365,10 @@
                                 специалист</span></strong></h3>
             <p style="text-align:justify">&nbsp;</p>
             <p style="text-align:justify"><span style="font-size:14.0pt">Поскольку Интернет не знает границ,
-                            обратиться можно из любого уголка земного шара. Даже находясь временно за границей.
+                            обратиться можно из любого уголка земного шара. Даже находясь временно за границей. 
                             Мы общаемся на русском и белорусском языке. Специалист обслуживает учащихся и родителей учащихся ГУО "СШ №126" </span></p>
 
-
+            
             <h3 style="text-align:justify"><strong><span style="font-size:14.0pt">Семейные секреты останутся в
                                 тайне</span></strong></h3>
 
@@ -382,7 +384,7 @@
                             дистанционная<strong> консультация психолога онлайн</strong>, во время которой совсем не
                             обязательно показывать свое лицо.</span></p>
 
-
+            
         </div>
     </div>
 
@@ -419,17 +421,27 @@
                 <h2>Связь с нами</h2>
                 <form action="consult-request" method="post">
                     <div class="form-group">
+
+                        <input type="text" name="sursname" class="form-control" placeholder="Фамилия">
+                        <input type="hidden" name="from" value="Остались вопросы?" class="form-control">
+        
+        
+                    </div>
+                    <div class="form-group">
                         <input type="text" name="name" class="form-control" placeholder="Имя">
                         <input type="hidden" name="from" value="Остались вопросы?" class="form-control" placeholder="Имя">
                     </div>
+
                     <div class="form-group">
                         <input type="text" class="form-control" name="phone" placeholder="Телефон">
                     </div>
+
                     <div class="form-group">
                         <select name="role">
                             <option value="" selected disabled>Кто вы?</option>
                             <option value="student">Учащийся</option>
                             <option value="parent">Родитель</option>
+                            
                         </select>
                         <input type="text" name="available-time" class="form-control" placeholder="Удобное время для связи">
                         <select name="consult-date" style="margin-top:20px;">
@@ -438,8 +450,9 @@
                             <option value="today">Сегодня в любое время</option>
                             <option value="tomorrow">Завтра</option>
                             <option value="other-day">В другой день</option>
-                        </select>
+                        </select>  
                     </div>
+
                     <div class="form-group">
                         <textarea placeholder="Опишите вашу проблему" name="description" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
                     </div>
@@ -455,12 +468,12 @@
             <div class="col-md-12">
                 <h2>Вы можете связаться с нами</h2>
             </div>
-
+            
             <div class="col-lg-3 col-md-6">
                 <a class="ic1" href="tel:+375(29)569-43-09">
                     +375(29)569-43-09</a>
             </div>
-
+            
             <div class="col-lg-3 col-md-6">
                 <a class="ic1" href="https://www.viber.com/ru/?utm_source=invite&utm_Medium=share&utm_campaign=msgtest">
                     Viber<img src="/static/img/viber.png" style="height: 36px;margin-top:-5px;padding-right: 10px;"
@@ -471,14 +484,14 @@
                 <a class="ic1" href="https://web.telegram.org/z/">
                    Telegram<img src="/static/img/telegram.jpg" style="height: 36px;margin-top:-5px;padding-right: 10px;"
                     alt="Иконка Telegram" title="Изображение иконка  Telegram">@sch126</a>
-            </div>
+            </div>           
 
 	        <div class="col-lg-3 col-md-6">
                 <a class="ic1" href="https://mail.yandex.ru/?uid=1130000006573778#inbox">
                 Email: <img src="/static/img/i4-min.png" style="height: 36px;margin-top:-5px;padding-right: 10px;"
                 alt="Иконка Email" title="Изображение иконка Email"> sch126@minsk.edu.by</a>
             </div>
-
+	
 
         </div>
         <div id="footer" class="container">
@@ -506,66 +519,39 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/static/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-<div style="display: none">
-    <div id="call0">
-        <h2>Оставьте свои <br>контактные данные и мы<br>
-            Вам перезвоним</h2>
+
+
+    <div id="call1">
+        <h2>Вход</h2>
         <form action="mail.php" method="post">
             <div class="form-group">
 
-                <input type="text" name="name" class="form-control" placeholder="Имя">
-                <input type="hidden" name="from" value="Другие проблемы" class="form-control">
-
+                <input type="text" name="login" class="form-control" placeholder="Логин">
             </div>
             <div class="form-group">
 
-                <input type="text" name='phone' class="form-control" placeholder="Телефон">
+                <input type="password" name='password' class="form-control" placeholder="Пароль">
             </div>
-
-            <div class="form-group">
-                    <textarea placeholder="Опишите вашу проблему" name="more" class="form-control"
-                              id="exampleFormControlTextarea1" rows="5"></textarea>
-            </div>
-            <div class="form-group">
-                	<select name="where">
-
-                    <option value="" selected disabled>Как с вами удобно связаться</option>
-                    <option value="По телефону">По телефону</option>
-                    <option value="Viber">Viber</option>
-                    <option value="WhatsApp">WhatsApp</option>
-                    <option value="Telegram">Telegram</option>
-                </select>
-
-
-
-                <input type="text" name='time' class="form-control" placeholder="Удобное время для связи">
-<select name="consult" style="margin-top:20px;">
-
-                    <option value="" selected disabled>Когда нужна консультация	</option>
-                    <option value="Сейчас срочно">Сейчас срочно</option>
-                    <option value="Сегодня в любое время">Сегодня в любое время</option>
-                    <option value="Завтра">Завтра</option>
-                    <option value="В другой день">В другой день</option>
-                </select>
-            </div>
-
-
-
-<button type="submit" class="btn2">Отправить заявку</button>
+            
+            <button type="submit" class="btn2">Войти</button>
         </form>
     </div>
-
-
+    
+</div>
 
 
     <div id="call">
         <h2>Оставьте свои <br>контактные данные и мы<br>
             Вам перезвоним</h2>
         <form action="mail.php" method="post">
+            <div class="form-group">
+
+                <input type="text" name="sursname" class="form-control" placeholder="Фамилия">
+                <input type="hidden" name="from" value="Заказать звонок" class="form-control">
+
+
+            </div>
             <div class="form-group">
 
                 <input type="text" name="name" class="form-control" placeholder="Имя">
@@ -581,9 +567,10 @@
                 <select name="where">
 
                     <option value="" selected disabled>Кто вы?</option>
-                    <option value="По телефону">Ученик</option>
-                    <option value="Viber">Родитель</option>
-
+                    <option value="student">Ученик</option>
+                    <option value="parent">Родитель</option>
+                    
+                    
                 </select>
                 <input type="text" name='time' class="form-control" placeholder="Удобное время для связи">
 <select name="consult" style="margin-top:20px;">
@@ -593,12 +580,12 @@
                     <option value="Сегодня в любое время">Сегодня в любое время</option>
                     <option value="Завтра">Завтра</option>
                     <option value="В другой день">В другой день</option>
-                </select>
+                </select>              
 				</div>
             <button type="submit" class="btn2">Отправить заявку</button>
         </form>
     </div>
-
+    
 </div>
 
 
