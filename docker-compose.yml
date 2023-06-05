@@ -1,13 +1,13 @@
 version: '3.9'
 services:
     app:
-        build:
-            dockerfile: Dockerfile
-            context: .
-            target: dev
+        working_dir: /go/app/api
         volumes:
-            - .:/opt/app/api
+            - .:/go/app/api
+        command: bash -c "go get -d -v ./... && go build -o /tmp/api-server ./*.go && /tmp/api-server start"
+        build: .
         environment:
+            ENV CGO_ENABLED: 0
             API_SERVER_ADDR: ':3000'
             DATABASE_URL: postgres://local-dev@db/api?sslmode=disable
         ports:
