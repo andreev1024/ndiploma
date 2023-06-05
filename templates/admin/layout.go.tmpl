@@ -1,13 +1,46 @@
 {{define "base"}}
     <!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>{{.Title}}</title>
-            <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-            <link rel="stylesheet" href="/static/css/admin.css">
-        </head>
-        <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/owl.carousel.css">
+    <link rel="stylesheet" href="static/css/adminstyle.css">
+    <title>Админка Сайта психологической помощи</title>
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4">
+                        <div class="logo" >
+                            <a href ="http://sch126.minsk.edu.by/"><img src="static/img/sch126.png" alt="логотип СШ №126"
+                                title="Изображение логотипа СШ №126" ></a>
+                            <p>Психологическая  <br> помощь</p> 
+                        </div>
+                    </div>
+    
+                    <div class="col-lg-5	 col-md-1" align="center" >
+                        <ul id="menu" class="menu" >
+                            <li><a href="admin.html"> Календарь </a></li>
+                            <li><a href=""> Заявки </a></li>  
+                            
+                            <button id="menu-toggle2"><i class="fas fa-times "></i></button>
+                        </ul>
+                    </div>
+    
+                    <div class="col-lg-4 col-md-5">
+                        <div class="phone">
+                            <p style="margin-top:-3px; margin-left:1px "><b>Время работы:</b></p>
+                            <p style="margin-top:-10px;"><i class="far fa-clock"></i> <b>10:00 - 18:00</b>&nbsp;</p>
+                        
+                </div>
+            </div>
+        </nav>
+    </header>
             {{template "body" .}}
         </body>
     </html>
