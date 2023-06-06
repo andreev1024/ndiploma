@@ -10,9 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="favicon.ico?ver=3" type="image/x-icon">
     <link rel="stylesheet" href="/static/css/owl.carousel.css">
-    <link rel="stylesheet" href="/static/css/style.css?ver=5">
+    <link rel="stylesheet" href="/static/css/style.css">
     <title>Психологическая помощь</title>
     <meta name="description"
           content="Психологическая помощь родителям и учащимся 'Средней школы №126 г. Минска'"/>
@@ -105,6 +104,7 @@
                         <li><a href="#problem"> Проблемы </a></li>
                         <li><a href="#video"> Видео </a></li>
                         <li><a href="#contact"> Контакты </a></li>
+                        <li><a data-fancybox href="#call1"> Вход</a></li>
                         <button id="menu-toggle2"><i class="fas fa-times "></i></button>
                     </ul>
                 </div>
@@ -419,6 +419,8 @@
                 <h2>Связь с нами</h2>
                 <form action="consult-request" method="post">
                     <div class="form-group">
+                        <input type="text" name="sursname" class="form-control" placeholder="Фамилия">
+                        <input type="hidden" name="from" value="Остались вопросы?" class="form-control">
                         <input type="text" name="name" class="form-control" placeholder="Имя">
                         <input type="hidden" name="from" value="Остались вопросы?" class="form-control" placeholder="Имя">
                     </div>
@@ -511,51 +513,19 @@
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
 <div style="display: none">
-    <div id="call0">
-        <h2>Оставьте свои <br>контактные данные и мы<br>
-            Вам перезвоним</h2>
-        <form action="mail.php" method="post">
+    <div id="call1">
+        <h2>Вход</h2>
+        <form method="post">
             <div class="form-group">
 
-                <input type="text" name="name" class="form-control" placeholder="Имя">
-                <input type="hidden" name="from" value="Другие проблемы" class="form-control">
-
+                <input type="text" name="login" class="form-control" placeholder="Логин">
             </div>
             <div class="form-group">
 
-                <input type="text" name='phone' class="form-control" placeholder="Телефон">
+                <input type="password" name='password' class="form-control" placeholder="Пароль">
             </div>
-
-            <div class="form-group">
-                    <textarea placeholder="Опишите вашу проблему" name="more" class="form-control"
-                              id="exampleFormControlTextarea1" rows="5"></textarea>
-            </div>
-            <div class="form-group">
-                	<select name="where">
-
-                    <option value="" selected disabled>Как с вами удобно связаться</option>
-                    <option value="По телефону">По телефону</option>
-                    <option value="Viber">Viber</option>
-                    <option value="WhatsApp">WhatsApp</option>
-                    <option value="Telegram">Telegram</option>
-                </select>
-
-
-
-                <input type="text" name='time' class="form-control" placeholder="Удобное время для связи">
-<select name="consult" style="margin-top:20px;">
-
-                    <option value="" selected disabled>Когда нужна консультация	</option>
-                    <option value="Сейчас срочно">Сейчас срочно</option>
-                    <option value="Сегодня в любое время">Сегодня в любое время</option>
-                    <option value="Завтра">Завтра</option>
-                    <option value="В другой день">В другой день</option>
-                </select>
-            </div>
-
-
-
-<button type="submit" class="btn2">Отправить заявку</button>
+            
+            <button type="submit" class="btn2">Войти</button>
         </form>
     </div>
 
@@ -565,7 +535,7 @@
     <div id="call">
         <h2>Оставьте свои <br>контактные данные и мы<br>
             Вам перезвоним</h2>
-        <form action="mail.php" method="post">
+        <form method="post">
             <div class="form-group">
 
                 <input type="text" name="name" class="form-control" placeholder="Имя">
