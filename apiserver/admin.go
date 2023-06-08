@@ -34,6 +34,15 @@ func (s *APIServer) adminMainPage(w http.ResponseWriter, req *http.Request) erro
 	return t.ExecuteTemplate(w, "base", data)
 }
 
+func (s *APIServer) calendarPage(w http.ResponseWriter, req *http.Request) error {
+	t, err := template.ParseFiles("templates/admin/calendar.go.tmpl", "templates/admin/layout.go.tmpl")
+	if err != nil {
+		return err
+	}
+
+	return t.ExecuteTemplate(w, "base", nil)
+}
+
 func (s *APIServer) adminItemPage(w http.ResponseWriter, req *http.Request) error {
 	id, _ := strconv.Atoi(mux.Vars(req)["id"])
 
