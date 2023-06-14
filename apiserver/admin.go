@@ -1,10 +1,11 @@
 package apiserver
 
 import (
+	"crypto/md5"
 	"database/sql"
+	"fmt"
 	"net/http"
 	"strconv"
-
 	"text/template"
 
 	"github.com/gorilla/mux"
@@ -12,7 +13,19 @@ import (
 	"github.com/andreev1024/ndiploma/storage"
 )
 
+const SessionName = "session"
+const SessionKey = "authenticated"
+const SessionMaxAge = 86400 // 1 day
+
 func (s *APIServer) adminMainPage(w http.ResponseWriter, req *http.Request) error {
+	//TODO move to middleware
+	session, _ := s.sessions.Get(req, SessionName)
+	_, sessionExist := session.Values[SessionKey]
+	if !sessionExist {
+		http.Redirect(w, req, AdminLoginPage, http.StatusSeeOther)
+		return nil
+	}
+
 	t, err := template.ParseFiles("templates/admin/main.go.tmpl", "templates/admin/layout.go.tmpl")
 	if err != nil {
 		return err
@@ -35,6 +48,13 @@ func (s *APIServer) adminMainPage(w http.ResponseWriter, req *http.Request) erro
 }
 
 func (s *APIServer) calendarPage(w http.ResponseWriter, req *http.Request) error {
+	session, _ := s.sessions.Get(req, SessionName)
+	_, sessionExist := session.Values[SessionKey]
+	if !sessionExist {
+		http.Redirect(w, req, AdminLoginPage, http.StatusSeeOther)
+		return nil
+	}
+
 	t, err := template.ParseFiles("templates/admin/calendar.go.tmpl", "templates/admin/layout.go.tmpl")
 	if err != nil {
 		return err
@@ -44,6 +64,13 @@ func (s *APIServer) calendarPage(w http.ResponseWriter, req *http.Request) error
 }
 
 func (s *APIServer) adminItemPage(w http.ResponseWriter, req *http.Request) error {
+	session, _ := s.sessions.Get(req, SessionName)
+	_, sessionExist := session.Values[SessionKey]
+	if !sessionExist {
+		http.Redirect(w, req, AdminLoginPage, http.StatusSeeOther)
+		return nil
+	}
+
 	id, _ := strconv.Atoi(mux.Vars(req)["id"])
 
 	t, err := template.ParseFiles("templates/admin/consult-request.go.tmpl", "templates/admin/layout.go.tmpl")
@@ -70,4 +97,54 @@ func (s *APIServer) adminItemPage(w http.ResponseWriter, req *http.Request) erro
 	}
 
 	return t.ExecuteTemplate(w, "base", data)
+}
+
+func (s *APIServer) loginPage(w http.ResponseWriter, req *http.Request) error {
+	t, err := template.ParseFiles("templates/admin/login.go.tmpl")
+	if err != nil {
+		return err
+	}
+
+	_, error := req.URL.Query()["error"]
+
+	errorMsg := ""
+	if error {
+		errorMsg = "Invalid Login or Password"
+	}
+
+	data := struct {
+		ErrorMsg string
+	}{
+		ErrorMsg: errorMsg,
+	}
+
+	return t.Execute(w, data)
+}
+
+func (s *APIServer) login(w http.ResponseWriter, req *http.Request) error {
+	login := req.FormValue("login")
+	password := req.FormValue("password")
+	hashFromLoginAndPassword := md5.Sum([]byte(fmt.Sprintf("%s%s", login, password)))
+
+	if fmt.Sprintf("%x", hashFromLoginAndPassword) == "f6fdffe48c908deb0f4c3bd36c032e72" {
+		session, _ := s.sessions.Get(req, SessionName)
+		session.Options.MaxAge = SessionMaxAge
+		session.Values[SessionKey] = true
+		session.Save(req, w)
+		http.Redirect(w, req, AdminMainPage, http.StatusSeeOther)
+	} else {
+		http.Redirect(w, req, fmt.Sprintf("%s?error=1", AdminLoginPage), http.StatusSeeOther)
+	}
+
+	return nil
+}
+
+func (s *APIServer) logout(w http.ResponseWriter, req *http.Request) error {
+	session, _ := s.sessions.Get(req, SessionName)
+	session.Options.MaxAge = -1
+	session.Save(req, w)
+
+	http.Redirect(w, req, AdminLoginPage, http.StatusSeeOther)
+
+	return nil
 }
