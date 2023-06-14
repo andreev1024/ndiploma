@@ -17,6 +17,16 @@ docker compose --profile tools run migrate up # migration will execute (shell #2
 curl -F name=Andrey -F phone=+375291112233 -F role=teacher -F available-time=12:00 -F consult-date=15.04.2023 http://localhost:8081/consult-requests
 ```
 
+# Admin
+
+Admin UI accessible via `/admin` url. The session lifetime is 24 hours.
+
+```
+Credentials:
+login    admin
+password admin
+```
+
 # Migrations
 
 ```sh

@@ -11,6 +11,7 @@ import (
 	"github.com/andreev1024/ndiploma/storage"
 	"github.com/sirupsen/logrus"
 	"github.com/urfave/cli/v2"
+    "github.com/gorilla/sessions"
 )
 
 const (
@@ -58,8 +59,15 @@ func apiServerCmd() *cli.Command {
 				return fmt.Errorf("could not initialize storage: %w", err)
 			}
 
+            var (
+                //TODO move to env var
+                // key must be 16, 24 or 32 bytes long (AES-128, AES-192 or AES-256)
+                key   = []byte("super-secret-key")
+                sessionsStore = sessions.NewCookieStore(key)
+            )
+
 			addr := c.String(apiServerAddrFlagName)
-			server, err := apiserver.NewAPIServer(addr, s)
+			server, err := apiserver.NewAPIServer(addr, s, sessionsStore)
 			if err != nil {
 				return err
 			}

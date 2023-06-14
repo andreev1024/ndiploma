@@ -10,24 +10,27 @@ import (
 
 	"github.com/andreev1024/ndiploma/storage"
 	"github.com/gorilla/mux"
+	"github.com/gorilla/sessions"
 	"github.com/sirupsen/logrus"
 )
 
 var defaultStopTimeout = time.Second * 30
 
 type APIServer struct {
-	addr    string
-	storage *storage.Storage
+	addr     string
+	storage  *storage.Storage
+	sessions *sessions.CookieStore
 }
 
-func NewAPIServer(addr string, storage *storage.Storage) (*APIServer, error) {
+func NewAPIServer(addr string, storage *storage.Storage, sessions *sessions.CookieStore) (*APIServer, error) {
 	if addr == "" {
 		return nil, errors.New("addr cannot be blank")
 	}
 
 	return &APIServer{
-		addr:    addr,
-		storage: storage,
+		addr:     addr,
+		storage:  storage,
+		sessions: sessions,
 	}, nil
 }
 
@@ -53,15 +56,23 @@ func (s *APIServer) Start(stop <-chan struct{}) error {
 	return srv.Shutdown(ctx)
 }
 
+const AdminMainPage = "/admin"
+const AdminLoginPage = "/admin/login"
+
 func (s *APIServer) router() http.Handler {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/", s.defaultRoute)
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 	router.Methods("POST").Path("/consult-requests").Handler(Endpoint{s.createConsultRequest})
-	router.Methods("GET").Path("/admin").Handler(Endpoint{s.adminMainPage})
+
+	router.Methods("GET").Path(AdminMainPage).Handler(Endpoint{s.adminMainPage})
 	router.Methods("GET").Path("/admin/calendar").Handler(Endpoint{s.calendarPage})
 	router.Methods("GET").Path("/admin/consult-request/{id:[0-9]+}").Handler(Endpoint{s.adminItemPage})
+
+	router.Methods("GET").Path(AdminLoginPage).Handler(Endpoint{s.loginPage})
+	router.Methods("POST").Path(AdminLoginPage).Handler(Endpoint{s.login})
+	router.Methods("GET").Path("/admin/logout").Handler(Endpoint{s.logout})
 
 	return router
 }
